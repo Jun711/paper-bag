@@ -19,6 +19,11 @@ app.on('ready', function () {
     slashes: true
   }));
 
+  // Quit app when closed
+  mainWindow.on('closed', function() {
+    app.quit();
+  })
+
   if (process.platform == 'darwin') {
     mainMenuTemplate.unshift({ label: '' });
   }
@@ -44,6 +49,11 @@ function createAddWindow() {
     protocol: 'file:',
     slashes: true
   }));
+
+  // Garbage collection
+  addWindow.on('closed', function() {
+    addWindow = null;
+  })
 }
 
 // Create menu template
