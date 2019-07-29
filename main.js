@@ -7,7 +7,7 @@ const { app, BrowserWindow, Menu } = electron;
 let mainWindow;
 
 // Listen for app to be ready
-app.on('ready', function() {
+app.on('ready', function () {
   // Create new window
   mainWindow = new BrowserWindow({});
   // Load html into window
@@ -19,7 +19,7 @@ app.on('ready', function() {
   }));
 
   if (process.platform == 'darwin') {
-    mainMenuTemplate.unshift({label: ''});
+    mainMenuTemplate.unshift({ label: '' });
   }
   // Build menu from template
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
@@ -29,8 +29,8 @@ app.on('ready', function() {
   Menu.setApplicationMenu(mainMenu);
 });
 
- // Create menu template
- const mainMenuTemplate = [
+// Create menu template
+const mainMenuTemplate = [
   {
     label: 'File',
     submenu: [
@@ -42,10 +42,35 @@ app.on('ready', function() {
       },
       {
         label: 'Quit',
-        accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        accelerator: 'CommandOrControl+Q',
         click() {
           app.quit();
         }
+      }
+    ]
+  },
+  {
+    label: 'Edit',
+    submenu: [
+      {
+        label: 'Undo',
+        accelerator: 'CommandOrControl+Z',
+      },
+      {
+        label: 'Redo',
+        accelerator: 'CommandOrControl+Shift+Z',
+      },
+      {
+        label: 'Cut',
+        accelerator: 'CommandOrControl+X',
+      },
+      {
+        label: 'Copy',
+        accelerator: 'CommandOrControl+C',
+      },
+      {
+        label: 'Paste',
+        accelerator: 'CommandOrControl+V',
       }
     ]
   }
