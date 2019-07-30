@@ -11,5 +11,22 @@
         </div>
         <button type="submit">Add Item</button>
     </form>
+
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+        const form = document.querySelector('form');
+        form.addEventListener('submit', submitForm);
+
+        function submitForm(event) {
+            // whenever we submit a form, it's just try
+            // to submit to a file as it would normally
+            // to stop that, we use preventDefault to
+            // prevent default behavior
+            event.preventDefault();
+            const item = document.querySelector('#item').value;
+            ipcRenderer.send('item:add', item);
+        }
+    </script>
 </body>
 </html>
