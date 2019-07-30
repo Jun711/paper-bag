@@ -21,6 +21,12 @@
         ipcRenderer.on('items:remove', function() {
             ul.innerHTML = '';
         })
+
+        ul.addEventListener('dblclick', removeItem);
+
+        function removeItem(event) {
+            event.target.remove();
+        }
     </script>
 </body>
 </html>
