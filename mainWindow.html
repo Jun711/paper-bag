@@ -17,6 +17,10 @@
             li.appendChild(itemText);
             ul.appendChild(li);
         })
+
+        ipcRenderer.on('items:remove', function() {
+            ul.innerHTML = '';
+        })
     </script>
 </body>
 </html>

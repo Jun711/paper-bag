@@ -83,7 +83,11 @@ const mainMenuTemplate = [
         }
       },
       {
-        label: 'Remove Item'
+        label: 'Remove Items',
+        accelerator: 'CommandOrControl+Shift+D',
+        click() {
+          mainWindow.webContents.send('items:remove');
+        }
       },
       {
         label: 'Quit',
